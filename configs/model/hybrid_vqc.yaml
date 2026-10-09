@@ -1,0 +1,27 @@
+# Hybrid Variational Quantum Circuit (VQC) Policy Configuration
+model:
+  name: "hybrid_vqc"
+  type: "hybrid_vqc"
+  num_qubits: 4
+  num_layers: 2         # Strongly entangling ansatz layers
+  entanglement: "ring"  # "ring" or "linear" (nearest-neighbor)
+  encoding: "angle_ry"  # Ry angle encoding normalized to [-pi, pi]
+  input_features: 4     # Top-4 principal/compressed features mapped to 4 qubits
+  output_actions: 5     # STAY, NORTH, SOUTH, EAST, WEST
+  learning_rate: 0.01
+  gamma: 0.95
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.96
+  batch_size: 16        # Modest batch size for simulation throughput
+  buffer_size: 2000
+  target_update_interval: 10
+  backend: "simulator"  # "simulator" | "noisy_simulator" | "ibm_hardware"
+  noise:
+    depolarizing_error: 0.01
+    bit_flip_error: 0.005
+
+training:
+  episodes: 100
+  eval_freq: 20
+  save_dir: "results/checkpoints/hybrid_vqc"

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="cGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#bg)" />
+
+  <!-- Title -->
+  <text x="500" y="45" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Q-Swarm RL: System Architecture
+  </text>
+  <text x="500" y="70" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">
+    Hybrid Quantum-Classical Multi-Agent RL for GPS-Denied Swarm Navigation &amp; Mesh Optimization
+  </text>
+
+  <!-- Layer 1: Simulation Environment -->
+  <g transform="translate(50, 100)" filter="url(#shadow)">
+    <rect width="900" height="110" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="30" y="30" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#38bdf8">1. Swarm Simulation Environment (Gymnasium-Compatible)</text>
+    <rect x="30" y="45" width="190" height="50" rx="6" fill="#0f172a" stroke="#1e3a8a" />
+    <text x="125" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="600">Drone Kinematics</text>
+    <text x="125" y="85" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">5 Discrete Actions &amp; Battery</text>
+
+    <rect x="250" y="45" width="190" height="50" rx="6" fill="#0f172a" stroke="#1e3a8a" />
+    <text x="345" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="600">Obstacle Field</text>
+    <text x="345" y="85" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Static Debris &amp; Moving Hazards</text>
+
+    <rect x="470" y="45" width="190" height="50" rx="6" fill="#0f172a" stroke="#1e3a8a" />
+    <text x="565" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle" font-weight="600">GPS-Denied Sensing</text>
+    <text x="565" y="85" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Noisy Odometry &amp; Radar</text>
+
+    <rect x="690" y="45" width="180" height="50" rx="6" fill="#0f172a" stroke="#0284c7" />
+    <text x="780" y="70" font-family="system-ui, sans-serif" font-size="12" fill="#38bdf8" text-anchor="middle" font-weight="600">Dynamic Mesh Graph</text>
+    <text x="780" y="85" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">NetworkX / Laplacian λ₂</text>
+  </g>
+
+  <!-- Downward Connectors -->
+  <line x1="500" y1="210" x2="500" y2="245" stroke="#475569" stroke-width="2" stroke-dasharray="4" />
+
+  <!-- Layer 2: Feature Pipeline -->
+  <g transform="translate(150, 245)" filter="url(#shadow)">
+    <rect width="700" height="70" rx="8" fill="#1e293b" stroke="#475569" />
+    <text x="25" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#a78bfa">2. Manifold Feature Compression &amp; Angle Mapping</text>
+    <text x="25" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">12-dim Raw Observation → Deterministic Projection → 4 Bounded Angles x ∈ [-π, π]⁴</text>
+  </g>
+
+  <!-- Downward Connectors -->
+  <line x1="500" y1="315" x2="500" y2="345" stroke="#475569" stroke-width="2" stroke-dasharray="4" />
+
+  <!-- Layer 3: Policy Execution Layer -->
+  <g transform="translate(50, 345)" filter="url(#shadow)">
+    <rect width="900" height="135" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="30" y="25" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="#f8fafc">3. Multi-Model Decision Engines (Parameter-Fair Baselines)</text>
+
+    <!-- Model 1 -->
+    <rect x="30" y="38" width="195" height="80" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="127" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#38bdf8" text-anchor="middle" font-weight="bold">Deterministic Heuristic</text>
+    <text x="127" y="78" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Potential Field + Cohesion</text>
+    <text x="127" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="bold">0 Parameters</text>
+
+    <!-- Model 2 -->
+    <rect x="250" y="38" width="195" height="80" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="347" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#a855f7" text-anchor="middle" font-weight="bold">Classical Matched</text>
+    <text x="347" y="78" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Linear Controller (4 → 5)</text>
+    <text x="347" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="bold">25 Parameters</text>
+
+    <!-- Model 3 -->
+    <rect x="470" y="38" width="195" height="80" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="567" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#ec4899" text-anchor="middle" font-weight="bold">Classical MLP DQN</text>
+    <text x="567" y="78" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">2-Layer MLP (64, 32)</text>
+    <text x="567" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle" font-weight="bold">3,077 Parameters</text>
+
+    <!-- Model 4 (Quantum) -->
+    <rect x="690" y="38" width="180" height="80" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" />
+    <text x="780" y="60" font-family="system-ui, sans-serif" font-size="12" fill="#c084fc" text-anchor="middle" font-weight="bold">Hybrid VQC Policy</text>
+    <text x="780" y="78" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">4 Qubits + Ring CNOT</text>
+    <text x="780" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="bold">33-41 Parameters</text>
+  </g>
+
+  <!-- Layer 4: Dashboard & API -->
+  <g transform="translate(100, 505)" filter="url(#shadow)">
+    <rect width="800" height="65" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+    <text x="250" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">Streamlit Interactive Dashboard</text>
+    <line x1="400" y1="12" x2="400" y2="53" stroke="#334155" stroke-width="1.5" />
+    <text x="550" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#10b981" text-anchor="middle">FastAPI Simulation &amp; Telemetry API</text>
+  </g>
+</svg>

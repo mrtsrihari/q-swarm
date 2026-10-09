@@ -1,0 +1,21 @@
+# Parameter-Matched Classical Baseline
+# Intentionally constrained to match the trainable parameter count (~28-36 params) of the Hybrid VQC
+model:
+  name: "classical_matched"
+  type: "classical_matched"
+  # Compressed input size is 6. With a single linear layer of 6 -> 5, params = 6*5 + 5 = 35 params.
+  # This provides a scientifically fair comparison against the 4-qubit VQC hybrid model.
+  hidden_dims: [] # Direct linear projection or bottleneck
+  learning_rate: 0.005
+  gamma: 0.95
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.96
+  batch_size: 32
+  buffer_size: 5000
+  target_update_interval: 10
+
+training:
+  episodes: 100
+  eval_freq: 20
+  save_dir: "results/checkpoints/classical_matched"

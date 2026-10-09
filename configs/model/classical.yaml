@@ -1,0 +1,19 @@
+# Classical Standard MLP Baseline (DQN)
+model:
+  name: "classical_mlp"
+  type: "classical"
+  hidden_dims: [64, 32]
+  activation: "relu"
+  learning_rate: 0.001
+  gamma: 0.95
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.96
+  batch_size: 32
+  buffer_size: 5000
+  target_update_interval: 10
+
+training:
+  episodes: 100
+  eval_freq: 20
+  save_dir: "results/checkpoints/classical"

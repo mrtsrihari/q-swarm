@@ -1,0 +1,38 @@
+# Benchmark Experiment Suite Configuration
+experiment:
+  name: "qswarm_comparative_benchmark"
+  description: "Deterministic cross-model and quantum ablation benchmark across emergency scenarios"
+  output_dir: "results"
+
+# Full ablation suite models
+models:
+  - heuristic
+  - classical_matched
+  - classical
+  - hybrid_vqc_no_entanglement
+  - hybrid_vqc_entangled
+  - hybrid_vqc_noisy
+
+scenarios:
+  - open_field
+  - rescue_maze
+  - dynamic_hazard
+  - mesh_tradeoff
+  - scale_test
+
+# Encoding ablation comparison
+encodings:
+  - graph_aware
+  - simple_angle
+
+# Fast smoke evaluation settings (used with --smoke flag)
+smoke:
+  seeds: [42, 101]
+  episodes_per_scenario: 2
+  max_steps: 30
+
+# Full comprehensive benchmark settings
+full:
+  seeds: [42, 101, 202, 303, 404]
+  episodes_per_scenario: 5
+  max_steps: 60

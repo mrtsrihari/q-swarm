@@ -1,0 +1,5 @@
+encoding,scenario,mean_return,mesh_connected_ratio,mean_coverage,mean_latency_ms
+graph_aware,rescue_maze,-781.45,100.0,15.0,6.708
+graph_aware,mesh_tradeoff,-468.8,100.0,30.9,6.623
+simple_angle,rescue_maze,-197.53,30.0,39.8,6.47
+simple_angle,mesh_tradeoff,-167.96,100.0,35.5,8.053

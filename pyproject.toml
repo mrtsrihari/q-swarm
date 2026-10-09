@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "q-swarm"
+version = "0.1.0"
+description = "Hybrid Quantum-Reinforcement Learning for Swarm Pathfinding & Dynamic Mesh Optimization"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Q-Swarm RL Team", email = "research@qswarm.local"}
+]
+keywords = [
+    "quantum-computing",
+    "reinforcement-learning",
+    "multi-agent",
+    "qiskit",
+    "mesh-network",
+    "drone-swarm"
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "torch>=2.0.0",
+    "networkx>=3.0",
+    "gymnasium>=0.29.0",
+    "qiskit>=1.0.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "streamlit>=1.25.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "ruff>=0.1.0",
+    "httpx>=0.24.0"
+]
+quantum-hardware = [
+    "qiskit-ibm-runtime>=0.20.0"
+]
+
+[project.scripts]
+qswarm = "qswarm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "quantum: marks tests requiring quantum simulation",
+    "hardware: marks tests requiring real quantum hardware"
+]

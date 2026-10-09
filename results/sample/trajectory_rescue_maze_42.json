@@ -1,0 +1,3806 @@
+{
+  "summary": {
+    "scenario": "rescue_maze",
+    "seed": 42,
+    "steps": 29,
+    "total_reward": 275.99,
+    "coverage_ratio": 0.963,
+    "targets_reached": "3/3",
+    "success": true,
+    "total_collisions": 0,
+    "mesh_connected": true,
+    "algebraic_connectivity": 1.026
+  },
+  "frames": [
+    {
+      "step": 0,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            3.0,
+            3.0
+          ],
+          "battery": 100.0,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            4.2,
+            3.0
+          ],
+          "battery": 100.0,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            4.2
+          ],
+          "battery": 100.0,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            4.2,
+            4.2
+          ],
+          "battery": 100.0,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.7878679931163788
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.7878679931163788
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.8500000238418579
+        }
+      ],
+      "coverage_ratio": 0.147,
+      "reward": 0.0
+    },
+    {
+      "step": 1,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            3.0
+          ],
+          "battery": 98.9,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            4.2,
+            2.0
+          ],
+          "battery": 98.9,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            5.2
+          ],
+          "battery": 98.9,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            5.2,
+            4.2
+          ],
+          "battery": 98.9,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.5727998316287994
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.5727998316287994
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.697923868894577
+        }
+      ],
+      "coverage_ratio": 0.177,
+      "reward": 13.86
+    },
+    {
+      "step": 2,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            4.0
+          ],
+          "battery": 97.8,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            5.2,
+            2.0
+          ],
+          "battery": 97.8,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            6.2
+          ],
+          "battery": 97.8,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            5.2,
+            3.2
+          ],
+          "battery": 97.8,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.5283009707927704
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.5876894593238831
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.40733659267425537
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.53497314453125
+        }
+      ],
+      "coverage_ratio": 0.198,
+      "reward": 7.91
+    },
+    {
+      "step": 3,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            5.0
+          ],
+          "battery": 96.7,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            5.2,
+            1.0
+          ],
+          "battery": 96.7,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            7.2
+          ],
+          "battery": 96.7,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            5.2,
+            2.2
+          ],
+          "battery": 96.7,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.3596876263618469
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.46849268674850464
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.17765581607818604
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.3171749711036682
+        }
+      ],
+      "coverage_ratio": 0.215,
+      "reward": 8.75
+    },
+    {
+      "step": 4,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            6.0
+          ],
+          "battery": 95.6,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            6.2,
+            1.0
+          ],
+          "battery": 95.6,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            8.2
+          ],
+          "battery": 95.6,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            6.2,
+            2.2
+          ],
+          "battery": 95.6,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.18375861644744873
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.2920098900794983
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.015114247798919678
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.15000003576278687
+        }
+      ],
+      "coverage_ratio": 0.242,
+      "reward": 12.03
+    },
+    {
+      "step": 5,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            7.0
+          ],
+          "battery": 94.5,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            7.2,
+            1.0
+          ],
+          "battery": 94.5,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            9.2
+          ],
+          "battery": 94.5,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            7.2,
+            2.2
+          ],
+          "battery": 94.5,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.007528364658355713
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.1154097318649292
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        }
+      ],
+      "coverage_ratio": 0.273,
+      "reward": 11.87
+    },
+    {
+      "step": 6,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            8.0
+          ],
+          "battery": 93.4,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            8.2,
+            1.0
+          ],
+          "battery": 93.4,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            10.2
+          ],
+          "battery": 93.4,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            8.2,
+            2.2
+          ],
+          "battery": 93.4,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        }
+      ],
+      "coverage_ratio": 0.305,
+      "reward": 7.89
+    },
+    {
+      "step": 7,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            9.0
+          ],
+          "battery": 92.3,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            9.2,
+            1.0
+          ],
+          "battery": 92.3,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            11.2
+          ],
+          "battery": 92.3,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            9.2,
+            2.2
+          ],
+          "battery": 92.3,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        }
+      ],
+      "coverage_ratio": 0.338,
+      "reward": 7.83
+    },
+    {
+      "step": 8,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            10.0
+          ],
+          "battery": 91.2,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            10.2,
+            1.0
+          ],
+          "battery": 91.2,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            12.2
+          ],
+          "battery": 91.2,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            10.2,
+            2.2
+          ],
+          "battery": 91.2,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        }
+      ],
+      "coverage_ratio": 0.37,
+      "reward": 7.71
+    },
+    {
+      "step": 9,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            11.0
+          ],
+          "battery": 90.1,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            10.2,
+            2.0
+          ],
+          "battery": 90.1,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            13.2
+          ],
+          "battery": 90.1,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            11.2,
+            2.2
+          ],
+          "battery": 90.1,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.403,
+      "reward": 7.57
+    },
+    {
+      "step": 10,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            12.0
+          ],
+          "battery": 89.0,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            11.2,
+            2.0
+          ],
+          "battery": 89.0,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            14.2
+          ],
+          "battery": 89.0,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            12.2,
+            2.2
+          ],
+          "battery": 89.0,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.435,
+      "reward": 7.41
+    },
+    {
+      "step": 11,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            13.0
+          ],
+          "battery": 87.9,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            12.2,
+            2.0
+          ],
+          "battery": 87.9,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            15.2
+          ],
+          "battery": 87.9,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            13.2,
+            2.2
+          ],
+          "battery": 87.9,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.697923868894577
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.468,
+      "reward": 7.23
+    },
+    {
+      "step": 12,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            2.0,
+            14.0
+          ],
+          "battery": 86.8,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            12.2,
+            3.0
+          ],
+          "battery": 86.8,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            3.0,
+            16.2
+          ],
+          "battery": 86.8,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            14.2,
+            2.2
+          ],
+          "battery": 86.8,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307417392730713
+        }
+      ],
+      "coverage_ratio": 0.51,
+      "reward": 35.6
+    },
+    {
+      "step": 13,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            3.0,
+            14.0
+          ],
+          "battery": 85.7,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            13.2,
+            3.0
+          ],
+          "battery": 85.7,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            4.0,
+            16.2
+          ],
+          "battery": 85.7,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            14.2,
+            3.2
+          ],
+          "battery": 85.7,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.535,
+      "reward": 4.39
+    },
+    {
+      "step": 14,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            4.0,
+            14.0
+          ],
+          "battery": 84.6,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            14.2,
+            3.0
+          ],
+          "battery": 84.6,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            5.0,
+            16.2
+          ],
+          "battery": 84.6,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            15.2,
+            3.2
+          ],
+          "battery": 84.6,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.57,
+      "reward": 7.44
+    },
+    {
+      "step": 15,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            5.0,
+            14.0
+          ],
+          "battery": 83.5,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            14.2,
+            4.0
+          ],
+          "battery": 83.5,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            6.0,
+            16.2
+          ],
+          "battery": 83.5,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            16.2,
+            3.2
+          ],
+          "battery": 83.5,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307416498661041
+        }
+      ],
+      "coverage_ratio": 0.62,
+      "reward": 37.49
+    },
+    {
+      "step": 16,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            6.0,
+            14.0
+          ],
+          "battery": 82.4,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            14.2,
+            5.0
+          ],
+          "battery": 82.4,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            7.0,
+            16.2
+          ],
+          "battery": 82.4,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            16.2,
+            4.2
+          ],
+          "battery": 82.4,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307416498661041
+        }
+      ],
+      "coverage_ratio": 0.667,
+      "reward": 8.05
+    },
+    {
+      "step": 17,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            7.0,
+            14.0
+          ],
+          "battery": 81.3,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            14.2,
+            6.0
+          ],
+          "battery": 81.3,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            8.0,
+            16.2
+          ],
+          "battery": 81.3,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            16.2,
+            5.2
+          ],
+          "battery": 81.3,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307416498661041
+        }
+      ],
+      "coverage_ratio": 0.718,
+      "reward": 8.55
+    },
+    {
+      "step": 18,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            8.0,
+            14.0
+          ],
+          "battery": 80.2,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            14.2,
+            7.0
+          ],
+          "battery": 80.2,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            9.0,
+            16.2
+          ],
+          "battery": 80.2,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            16.2,
+            6.2
+          ],
+          "battery": 80.2,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307416498661041
+        }
+      ],
+      "coverage_ratio": 0.767,
+      "reward": 8.55
+    },
+    {
+      "step": 19,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            9.0,
+            14.0
+          ],
+          "battery": 79.1,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            15.2,
+            7.0
+          ],
+          "battery": 79.1,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            10.0,
+            16.2
+          ],
+          "battery": 79.1,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            16.2,
+            7.2
+          ],
+          "battery": 79.1,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725243955850601
+        }
+      ],
+      "coverage_ratio": 0.802,
+      "reward": 5.55
+    },
+    {
+      "step": 20,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            9.0,
+            15.0
+          ],
+          "battery": 78.0,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            15.2,
+            8.0
+          ],
+          "battery": 78.0,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            10.0,
+            17.2
+          ],
+          "battery": 78.0,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            7.2
+          ],
+          "battery": 78.0,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.7307416498661041
+        }
+      ],
+      "coverage_ratio": 0.823,
+      "reward": 0.52
+    },
+    {
+      "step": 21,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            10.0,
+            15.0
+          ],
+          "battery": 76.9,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            8.0
+          ],
+          "battery": 76.9,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            11.0,
+            17.2
+          ],
+          "battery": 76.9,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            8.2
+          ],
+          "battery": 76.9,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.845,
+      "reward": 2.93
+    },
+    {
+      "step": 22,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            10.0,
+            16.0
+          ],
+          "battery": 75.8,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            9.0
+          ],
+          "battery": 75.8,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            11.0,
+            18.2
+          ],
+          "battery": 75.8,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            9.2
+          ],
+          "battery": 75.8,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6979237496852875
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.863,
+      "reward": -0.17
+    },
+    {
+      "step": 23,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            10.0,
+            17.0
+          ],
+          "battery": 74.7,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            10.0
+          ],
+          "battery": 74.7,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            12.0,
+            18.2
+          ],
+          "battery": 74.7,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            10.2
+          ],
+          "battery": 74.7,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.7084523439407349
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.892,
+      "reward": 4.51
+    },
+    {
+      "step": 24,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            10.0,
+            18.0
+          ],
+          "battery": 73.6,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            11.0
+          ],
+          "battery": 73.6,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            13.0,
+            18.2
+          ],
+          "battery": 73.6,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            11.2
+          ],
+          "battery": 73.6,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6241675913333893
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        }
+      ],
+      "coverage_ratio": 0.92,
+      "reward": 3.99
+    },
+    {
+      "step": 25,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            11.0,
+            18.0
+          ],
+          "battery": 72.5,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            12.0
+          ],
+          "battery": 72.5,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            14.0,
+            18.2
+          ],
+          "battery": 72.5,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            12.2
+          ],
+          "battery": 72.5,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6241675913333893
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.1776556372642517
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.14999985694885254
+        }
+      ],
+      "coverage_ratio": 0.94,
+      "reward": 7.23
+    },
+    {
+      "step": 26,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            12.0,
+            18.0
+          ],
+          "battery": 71.4,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            13.0
+          ],
+          "battery": 71.4,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            15.0,
+            18.2
+          ],
+          "battery": 71.4,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            13.2
+          ],
+          "battery": 71.4,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.6241675913333893
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.3329166769981384
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.31717485189437866
+        }
+      ],
+      "coverage_ratio": 0.953,
+      "reward": 5.82
+    },
+    {
+      "step": 27,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            12.0,
+            19.0
+          ],
+          "battery": 70.3,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            16.2,
+            14.0
+          ],
+          "battery": 70.3,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            16.0,
+            18.2
+          ],
+          "battery": 70.3,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            14.2
+          ],
+          "battery": 70.3,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.18375855684280396
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.4900980591773987
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.11540961265563965
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.4744049906730652
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8725245147943497
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.47798454761505127
+        }
+      ],
+      "coverage_ratio": 0.963,
+      "reward": 5.53
+    },
+    {
+      "step": 28,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            12.0,
+            18.0
+          ],
+          "battery": 69.2,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            17.2,
+            14.0
+          ],
+          "battery": 69.2,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            17.0,
+            18.2
+          ],
+          "battery": 69.2,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            15.2
+          ],
+          "battery": 69.2,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": false,
+          "reached_by_drone": -1
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.17993897199630737
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.37450021505355835
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.2617587447166443
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.4744049906730652
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8500000238418579
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.6241674721240997
+        }
+      ],
+      "coverage_ratio": 0.963,
+      "reward": 2.84
+    },
+    {
+      "step": 29,
+      "drones": [
+        {
+          "id": 0,
+          "pos": [
+            12.0,
+            19.0
+          ],
+          "battery": 68.1,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "pos": [
+            17.2,
+            15.0
+          ],
+          "battery": 68.1,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "pos": [
+            17.0,
+            17.2
+          ],
+          "battery": 68.1,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "pos": [
+            17.2,
+            16.2
+          ],
+          "battery": 68.1,
+          "alive": true
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 7.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 7.0,
+          "y": 5.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 15.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 13.0,
+          "y": 10.0,
+          "radius": 1.6,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        },
+        {
+          "x": 10.0,
+          "y": 10.0,
+          "radius": 1.2,
+          "is_dynamic": false,
+          "vx": 0.0,
+          "vy": 0.0
+        }
+      ],
+      "targets": [
+        {
+          "target_id": 0,
+          "x": 17.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        },
+        {
+          "target_id": 1,
+          "x": 17.0,
+          "y": 4.0,
+          "is_reached": true,
+          "reached_by_drone": 3
+        },
+        {
+          "target_id": 2,
+          "x": 3.0,
+          "y": 17.0,
+          "is_reached": true,
+          "reached_by_drone": 2
+        }
+      ],
+      "edges": [
+        {
+          "source": 0,
+          "target": 1,
+          "weight": 0.17993897199630737
+        },
+        {
+          "source": 0,
+          "target": 2,
+          "weight": 0.3357335329055786
+        },
+        {
+          "source": 0,
+          "target": 3,
+          "weight": 0.26175880432128906
+        },
+        {
+          "source": 1,
+          "target": 2,
+          "weight": 0.7238658666610718
+        },
+        {
+          "source": 1,
+          "target": 3,
+          "weight": 0.8499999046325684
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "weight": 0.8725244998931885
+        }
+      ],
+      "coverage_ratio": 0.963,
+      "reward": 27.09
+    }
+  ]
+}

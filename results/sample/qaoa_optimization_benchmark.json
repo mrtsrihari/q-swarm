@@ -1,0 +1,31 @@
+{
+  "nodes": 4,
+  "edges": 3,
+  "exact_optimal_val": 1.341,
+  "exact_solution": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "exact_time_s": 9e-05,
+  "greedy_val": 1.241,
+  "greedy_solution": [
+    0,
+    1,
+    1,
+    0
+  ],
+  "greedy_time_s": 3e-05,
+  "qaoa_val": 1.341,
+  "qaoa_solution": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "qaoa_approx_ratio": 1.0,
+  "qaoa_time_s": 0.0199,
+  "qaoa_depth": 11,
+  "qaoa_cx_count": 6
+}
