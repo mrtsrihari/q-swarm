@@ -1,6 +1,5 @@
 import json
-import streamlit.components.v1 as components
-
+import streamlit as st
 def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id):
     """
     Renders an advanced HTML5 Canvas visualization of the drone swarm with tactical FX.
@@ -452,5 +451,4 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
     </body>
     </html>
     """
-    
-    components.html(html_code, height=720)
+    st.iframe(html_code, height=720)
