@@ -27,7 +27,7 @@ from qswarm.dashboard.visualizer import render_interactive_map  # noqa: E402
 
 st.set_page_config(
     page_title="Q-Swarm RL | Emergency Swarm Command Center",
-    page_icon="🛸",
+    page_icon="Q",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -37,209 +37,266 @@ st.set_page_config(
 # -------------------------------------------------------------
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap');
+
     /* Global Background & Typography */
     .stApp {
-        background-color: #F8FAFC;
-        color: #0F172A;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: #f4f4f0;
+        background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+        background-size: 20px 20px;
+        color: #111111;
+        font-family: 'Work Sans', sans-serif;
     }
 
-    /* Top Command Header Bar */
+    /* Override default Streamlit headers */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Quicksand', sans-serif !important;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #111111 !important;
+    }
+
+    /* Top Command Header Bar - Brutalist Light */
     .command-header {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 14px 22px;
-        margin-bottom: 18px;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 0px;
+        padding: 30px;
+        margin-bottom: 40px;
+        position: relative;
+        box-shadow: 8px 8px 0px #ff6b00;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-left: 8px solid #ff6b00;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 20px;
+    }
+    .command-header:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 12px 12px 0px #ff6b00;
     }
     .command-title {
-        font-size: 1.45rem;
-        font-weight: 800;
-        color: #0F172A;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 3.5rem;
+        color: #111;
+        line-height: 1;
+        margin-bottom: 10px;
+        letter-spacing: 0.02em;
+    }
+    .command-title span {
+        color: #ff6b00 !important;
+        font-size: 1.5rem !important;
+        vertical-align: middle;
+        margin-left: 10px;
     }
     .command-subtitle {
+        font-family: 'Space Mono', monospace;
         font-size: 0.85rem;
-        color: #475569;
-        font-weight: 500;
+        color: #555555;
+        text-transform: uppercase;
     }
     .status-pill-container {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         align-items: center;
         flex-wrap: wrap;
     }
     .status-pill {
-        font-size: 0.78rem;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
         font-weight: 700;
-        padding: 5px 12px;
-        border-radius: 20px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 0;
+        border: 2px solid #111;
+        text-transform: uppercase;
+        background: #fff;
+        color: #111;
+        box-shadow: 4px 4px 0px #111;
+        transition: all 0.2s;
     }
     .pill-online {
-        background-color: #ECFDF5;
-        color: #059669;
-        border: 1px solid #10B981;
+        background: #00ff66;
     }
     .pill-gps {
-        background-color: #FEF3C7;
-        color: #D97706;
-        border: 1px solid #F59E0B;
+        background: #ff3b30;
+        color: #fff;
     }
     .pill-quantum {
-        background-color: #F5F3FF;
-        color: #7C3AED;
-        border: 1px solid #8B5CF6;
+        background: #0000ff;
+        color: #fff;
     }
 
-    /* White Rounded Command Cards */
+    /* Brutalist Light Cards */
     .cmd-card {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 16px 18px;
-        margin-bottom: 14px;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 0px;
+        padding: 24px;
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: 4px 4px 0px #111;
+        transition: all 0.2s ease-in-out;
+    }
+    .cmd-card:hover {
+        border-color: #0000ff;
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px #0000ff;
+    }
+    .cmd-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: #111;
+        transition: all 0.2s ease-in-out;
+    }
+    .cmd-card:hover::before {
+        background: #0000ff;
     }
     .cmd-card-title {
-        font-size: 0.82rem;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: #475569;
-        margin-bottom: 8px;
+        color: #555;
+        margin-bottom: 16px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
     }
     .cmd-card-value {
-        font-size: 1.65rem;
-        font-weight: 800;
-        color: #0F172A;
-        line-height: 1.2;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 3.5rem;
+        color: #111;
+        line-height: 1;
     }
     .cmd-card-caption {
-        font-size: 0.78rem;
-        color: #64748B;
-        margin-top: 4px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        color: #666;
+        margin-top: 12px;
+        text-transform: uppercase;
+        border-top: 2px solid #eaeaea;
+        padding-top: 8px;
     }
 
     /* Badges */
+    .badge-ok, .badge-warn, .badge-amber {
+        font-family: 'Space Mono', monospace;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        border-radius: 0;
+        border: 2px solid #111;
+        box-shadow: 2px 2px 0px #111;
+    }
     .badge-ok {
-        background-color: #ECFDF5;
-        color: #059669;
-        border: 1px solid #059669;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        display: inline-block;
+        color: #111;
+        background: #00ff66;
     }
     .badge-warn {
-        background-color: #FEF2F2;
-        color: #DC2626;
-        border: 1px solid #DC2626;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        display: inline-block;
+        color: #fff;
+        background: #ff3b30;
     }
     .badge-amber {
-        background-color: #FFFBEB;
-        color: #D97706;
-        border: 1px solid #D97706;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        display: inline-block;
+        color: #111;
+        background: #ffcc00;
     }
 
     /* Quantum Pipeline Visual Card */
     .quantum-pipeline-card {
-        background: #FAF5FF;
-        border: 1px solid #DDD6FE;
-        border-radius: 12px;
-        padding: 16px;
-        margin-top: 10px;
-        margin-bottom: 14px;
+        background: #ffffff;
+        border: 2px solid #0000ff;
+        padding: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 6px 6px 0px #0000ff;
     }
     .quantum-step {
-        background: #FFFFFF;
-        border: 1px solid #C4B5FD;
-        border-radius: 8px;
-        padding: 8px 12px;
-        margin: 6px 0;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: #5B21B6;
+        font-family: 'Space Mono', monospace;
+        background: #f4f4f0;
+        border: 2px solid #111;
+        padding: 12px 16px;
+        margin: 8px 0;
+        font-size: 0.75rem;
+        color: #111;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-left: 6px solid #0000ff;
+        transition: all 0.2s ease;
+    }
+    .quantum-step:hover {
+        background: #fff;
+        transform: translateX(4px);
+        box-shadow: 4px 4px 0px #0000ff;
     }
     .quantum-arrow {
         text-align: center;
-        color: #8B5CF6;
-        font-weight: 800;
-        font-size: 0.9rem;
-        line-height: 1;
+        color: #0000ff;
+        font-size: 1.2rem;
+        margin: -4px 0;
+        font-weight: bold;
     }
 
     /* Map Legend Box */
     .legend-container {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 10px 14px;
-        margin-top: 10px;
-        font-size: 0.78rem;
-        color: #334155;
+        background: #fff;
+        border: 2px solid #111;
+        padding: 12px 16px;
+        margin-top: 16px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        color: #333;
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 16px;
         align-items: center;
+        box-shadow: 4px 4px 0px #111;
     }
     .legend-item {
         display: flex;
         align-items: center;
         gap: 6px;
-        font-weight: 600;
+        text-transform: uppercase;
+        font-weight: 700;
     }
 
     /* Battery Bar */
     .battery-track {
-        background-color: #E2E8F0;
-        border-radius: 6px;
+        background-color: #eaeaea;
         height: 10px;
         width: 100%;
-        overflow: hidden;
-        margin-top: 6px;
+        margin-top: 10px;
+        border: 2px solid #111;
     }
     .battery-fill {
         height: 100%;
-        border-radius: 6px;
+        transition: width 0.3s ease;
+        border-right: 2px solid #111;
     }
 
     /* Research Hypothesis Banner */
     .hypothesis-card {
-        background: #EFF6FF;
-        border-left: 4px solid #2563EB;
-        border-radius: 0 10px 10px 0;
-        padding: 14px 18px;
-        margin: 16px 0;
-        color: #1E3A8A;
-        font-size: 0.88rem;
+        background: #fff;
+        border: 2px solid #0000ff;
+        padding: 20px;
+        margin: 20px 0;
+        color: #0000ff;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        box-shadow: 6px 6px 0px #0000ff;
+        border-left: 8px solid #0000ff;
+        font-weight: bold;
+    }
+    
+    /* Tweaking specific colors explicitly used inline in app.py */
+    span[style*="color:#2563EB"] {
+        color: #0000ff !important; /* Replacing standard blue with pure brutalist blue */
     }
 </style>
 """, unsafe_allow_html=True)
@@ -326,13 +383,13 @@ def simulate_full_episode(policy_name: str, scenario: str, seed: int, max_steps:
 st.markdown("""
 <div class="command-header">
     <div>
-        <div class="command-title">🛸 Q-SWARM RL <span style="font-size:1rem; font-weight:600; color:#2563EB;">EMERGENCY MISSION CONTROL</span></div>
+        <div class="command-title"> Q-SWARM RL <span style="font-size:1rem; font-weight:600; color:#2563EB;">EMERGENCY MISSION CONTROL</span></div>
         <div class="command-subtitle">Hybrid Quantum-Reinforcement Learning for Multi-Drone GPS-Denied Navigation & Mesh Resilience</div>
     </div>
     <div class="status-pill-container">
         <span class="status-pill pill-online">● SYSTEM ONLINE</span>
-        <span class="status-pill pill-gps">⚠ GPS-DENIED (ODOMETRY DRIFT ACTIVE)</span>
-        <span class="status-pill pill-quantum">⚛ 4Q VQC CIRCUIT READY</span>
+        <span class="status-pill pill-gps"> GPS-DENIED (ODOMETRY DRIFT ACTIVE)</span>
+        <span class="status-pill pill-quantum"> 4Q VQC CIRCUIT READY</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -341,10 +398,10 @@ st.markdown("""
 # -------------------------------------------------------------
 # MAIN COMMAND CENTER LAYOUT
 # =============================================================
-presentation_mode = st.toggle("🎥 Presentation Mode", value=False, help="Maximize map for hackathon presentation")
+presentation_mode = st.toggle(" Presentation Mode", value=False, help="Maximize map for hackathon presentation")
 
 # Top-level map mode selector
-st.markdown("### 👁️ Visual Mode")
+st.markdown("###  Visual Mode")
 visual_mode = st.radio(
     "Visual Mode",
     ["mission", "mesh", "coverage", "quantum", "replay"],
@@ -369,7 +426,7 @@ else:
 # =============================================================
 with left_col:
     if not presentation_mode:
-        st.markdown("### 🎯 Mission Configuration")
+        st.markdown("###  Mission Configuration")
 
     scenario_choice = st.selectbox(
         "Disaster Scenario",
@@ -406,11 +463,11 @@ with left_col:
     )
 
     # Cloud Demo Mode & Execution Settings
-    demo_mode = st.toggle("⚡ Fast Cloud Demo Mode", value=True, help="Executes fast CPU simulation using bundled pre-trained checkpoints (recommended for public cloud deployment).")
+    demo_mode = st.toggle(" Fast Cloud Demo Mode", value=True, help="Executes fast CPU simulation using bundled pre-trained checkpoints (recommended for public cloud deployment).")
     if demo_mode:
-        st.markdown("<span class='status-pill pill-online' style='display:inline-block; margin-bottom:8px;'>⚡ DEMO MODE: CPU INFERENCE (BUNDLED CHECKPOINTS)</span>", unsafe_allow_html=True)
+        st.markdown("<span class='status-pill pill-online' style='display:inline-block; margin-bottom:8px;'> DEMO MODE: CPU INFERENCE (BUNDLED CHECKPOINTS)</span>", unsafe_allow_html=True)
 
-    with st.expander("ℹ️ Public Cloud & Training Policy", expanded=False):
+    with st.expander(" Public Cloud & Training Policy", expanded=False):
         st.markdown("""
         **Training Policy**:
         Full reinforcement learning training (DQN with parameter-shift quantum autograd) requires substantial compute and is executed locally via CLI:
@@ -421,7 +478,7 @@ with left_col:
         """)
 
     # Quantum Backend & Encoding Selector
-    st.markdown("#### ⚛️ Quantum Circuit Parameters")
+    st.markdown("#### ️ Quantum Circuit Parameters")
     is_quantum = policy_choice.startswith("hybrid_vqc")
 
     encoding_choice = st.selectbox(
@@ -445,13 +502,13 @@ with left_col:
         ibm_token = os.getenv("IBM_QUANTUM_TOKEN")
         if not ibm_token:
             st.warning("""
-            🔒 **Physical Hardware Execution Disabled in Public Deployment**:
+             **Physical Hardware Execution Disabled in Public Deployment**:
             Physical IBM Quantum QPU execution requires private runtime credentials and is disabled by default in public deployment to protect private quotas and avoid queue latency.
 
             The system executes using calibrated **GenericBackendV2 Superconducting Noise Models** with $M^{-1}$ readout error mitigation. To run against real hardware, clone locally and set `IBM_QUANTUM_TOKEN` in `.env`.
             """)
         else:
-            st.success("✅ **IBM Cloud Token Detected**: Target backend authenticated for batch inference.")
+            st.success(" **IBM Cloud Token Detected**: Target backend authenticated for batch inference.")
 
     c_s1, c_s2 = st.columns(2)
     with c_s1:
@@ -474,7 +531,7 @@ with left_col:
     total_frames = len(history)
 
     # Telemetry Summary Cards
-    st.markdown("### 📡 Swarm Live Metrics")
+    st.markdown("###  Swarm Live Metrics")
 
     cov_val = sim_data["coverage"] * 100.0
     st.markdown(f"""
@@ -518,7 +575,7 @@ with left_col:
 # CENTER PANEL: 2D SWARM ARENA, MAP, & TIMELINE
 # =============================================================
 with center_col:
-    st.markdown("### 🗺️ Emergency 2D Swarm Arena")
+    st.markdown("###  Emergency 2D Swarm Arena")
 
     if total_frames == 0:
         st.warning("No trajectory data available. Adjust parameters above to run.")
@@ -534,10 +591,10 @@ with center_col:
     st.session_state.step_idx = min(st.session_state.step_idx, total_frames - 1)
 
     with step_col1:
-        if st.button("⏮️ Start"):
+        if st.button(" Start"):
             st.session_state.step_idx = 0
     with step_col2:
-        if st.button("◀️ Prev"):
+        if st.button(" Prev"):
             st.session_state.step_idx = max(0, st.session_state.step_idx - 1)
     with step_col3:
         frame_idx = st.slider(
@@ -549,10 +606,10 @@ with center_col:
         )
         st.session_state.step_idx = frame_idx
     with step_col4:
-        if st.button("Next ▶️"):
+        if st.button("Next "):
             st.session_state.step_idx = min(total_frames - 1, st.session_state.step_idx + 1)
     with step_col5:
-        if st.button("End ⏭️"):
+        if st.button("End "):
             st.session_state.step_idx = total_frames - 1
 
     current_frame = history[st.session_state.step_idx]
@@ -573,10 +630,11 @@ with center_col:
 # =============================================================
 with right_col:
     selected_drone_id = 0
+    drone_ids = [d.drone_id for d in current_frame["drones"]]
+    
     if not presentation_mode:
-        st.markdown("### 🛰️ Drone Inspector")
+        st.markdown("###  Drone Inspector")
 
-        drone_ids = [d.drone_id for d in current_frame["drones"]]
         selected_drone_id = st.selectbox(
             "Inspect Swarm Agent",
             drone_ids,
@@ -588,10 +646,10 @@ with right_col:
     selected_drone = next(d for d in current_frame["drones"] if d.drone_id == selected_drone_id)
 
     # Action names & glyphs
-    action_labels = ["STAY ⏹", "NORTH ▲", "SOUTH ▼", "EAST ▶", "WEST ◀"]
+    action_labels = ["STAY ", "NORTH ", "SOUTH ", "EAST ", "WEST "]
     step_actions = current_frame.get("actions", [0] * len(drone_ids))
     chosen_act_idx = step_actions[selected_drone_id] if selected_drone_id < len(step_actions) else 0
-    chosen_act_str = action_labels[chosen_act_idx] if chosen_act_idx < len(action_labels) else "STAY ⏹"
+    chosen_act_str = action_labels[chosen_act_idx] if chosen_act_idx < len(action_labels) else "STAY "
 
     # Battery color
     bat_val = selected_drone.battery
@@ -635,12 +693,12 @@ with right_col:
             q_color = "#059669" if q >= 0.6 else ("#D97706" if q >= 0.2 else "#DC2626")
             st.markdown(f"- **D{neighbor}**: Signal Quality `{q * 100:.0f}%` <span style='color:{q_color}; font-weight:700;'>({'Strong' if q >= 0.6 else 'Fair'})</span>", unsafe_allow_html=True)
     else:
-        st.markdown("<span style='color:#DC2626; font-weight:700;'>⚠️ Isolated: No active communication links</span>", unsafe_allow_html=True)
+        st.markdown("<span style='color:#DC2626; font-weight:700;'>️ Isolated: No active communication links</span>", unsafe_allow_html=True)
 
     # Quantum vs Classical Decision Pipeline Explanation
     st.markdown("---")
     if is_quantum:
-        st.markdown("#### ⚛️ Quantum Decision Pipeline")
+        st.markdown("#### ️ Quantum Decision Pipeline")
         st.caption("Live transparency: Observation features mapped into parameterized quantum circuit.")
 
         # Extract features for this drone
@@ -702,7 +760,7 @@ with right_col:
         st.pyplot(fig_exp, width="stretch")
 
     else:
-        st.markdown("#### 🧠 Classical Decision Pipeline")
+        st.markdown("####  Classical Decision Pipeline")
         st.caption("Feed-forward neural / heuristic policy mapping coordinates directly to discrete action.")
         st.markdown(f"""
         <div class="cmd-card">
@@ -721,17 +779,17 @@ with right_col:
 # =============================================================
 st.markdown("---")
 tab_b1, tab_b2, tab_b3, tab_b4 = st.tabs([
-    "📊 Experiment Benchmarks & Evidence",
-    "⚛️ Quantum Circuit & Resource Estimation",
-    "🔀 QAOA Mesh Repair Studio",
-    "📖 Scientific Claims, Limitations & Hypothesis",
+    " Experiment Benchmarks & Evidence",
+    "️ Quantum Circuit & Resource Estimation",
+    " QAOA Mesh Repair Studio",
+    " Scientific Claims, Limitations & Hypothesis",
 ])
 
 # -------------------------------------------------------------
 # TAB 1: BENCHMARKS & EVIDENCE
 # -------------------------------------------------------------
 with tab_b1:
-    st.subheader("📊 Empirical Multi-Policy & Ablation Matrix")
+    st.subheader(" Empirical Multi-Policy & Ablation Matrix")
     st.caption("All metrics produced from deterministic multi-seed runs using exact simulator logging.")
 
     csv_candidates = ["results/sample/benchmark_summary.csv"]
@@ -753,13 +811,13 @@ with tab_b1:
         # Feature Encoding Ablation
         enc_csv = os.path.join(os.path.dirname(csv_path), "encoding_ablation.csv")
         if os.path.exists(enc_csv):
-            st.markdown("#### ⚛️ Quantum State Encoding Ablation (Graph-Aware vs Simple Angle)")
+            st.markdown("#### ️ Quantum State Encoding Ablation (Graph-Aware vs Simple Angle)")
             enc_df = pd.read_csv(enc_csv)
             st.dataframe(enc_df, width="stretch")
-            st.markdown("✅ **Empirical Conclusion**: In `rescue_maze`, graph-aware encoding preserves **100% mesh connected ratio** vs **16.7–30.0%** for simple angle encoding, demonstrating that topology-aware VQC input directly prevents swarm fragmentation.")
+            st.markdown(" **Empirical Conclusion**: In `rescue_maze`, graph-aware encoding preserves **100% mesh connected ratio** vs **16.7–30.0%** for simple angle encoding, demonstrating that topology-aware VQC input directly prevents swarm fragmentation.")
 
         with open(csv_path, "rb") as f:
-            st.download_button("📥 Download Benchmark Summary CSV", f, file_name="benchmark_summary.csv", mime="text/csv")
+            st.download_button(" Download Benchmark Summary CSV", f, file_name="benchmark_summary.csv", mime="text/csv")
     else:
         st.info("No benchmark results file found. Run `python scripts/run_benchmark.py --smoke` to populate empirical benchmarks.")
 
@@ -768,7 +826,7 @@ with tab_b1:
 # TAB 2: QUANTUM CIRCUIT & RESOURCE ESTIMATION
 # -------------------------------------------------------------
 with tab_b2:
-    st.subheader("⚛️ Variational Quantum Circuit (VQC) Deep Inspector")
+    st.subheader("️ Variational Quantum Circuit (VQC) Deep Inspector")
     st.caption("Transpiled depth, gate counts, parameter-shift gradient mechanics, and NISQ hardware execution.")
 
     inspect_policy = HybridVQCPolicy(num_qubits=4, num_layers=2, entanglement="ring")
@@ -819,7 +877,7 @@ with tab_b2:
 # TAB 3: QAOA MESH REPAIR STUDIO
 # -------------------------------------------------------------
 with tab_b3:
-    st.subheader("🔀 QAOA Mesh Partition Repair Optimization")
+    st.subheader(" QAOA Mesh Partition Repair Optimization")
     st.caption("Quantum Approximate Optimization Algorithm for bridge relay drone selection on partitioned graphs.")
 
     st.markdown("""
@@ -856,7 +914,7 @@ with tab_b3:
 # TAB 4: METHODS, CLAIMS & TRANSPARENCY
 # -------------------------------------------------------------
 with tab_b4:
-    st.subheader("📖 Scientific Rigor & Transparent Limitations")
+    st.subheader(" Scientific Rigor & Transparent Limitations")
 
     st.markdown("""
     <div class="hypothesis-card">

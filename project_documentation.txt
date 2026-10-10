@@ -1,0 +1,100 @@
+========================================================================
+                          Q-SWARM: HACKATHON PRESENTATION GUIDE
+========================================================================
+
+Use this document as your script or reference material for your online 
+hackathon presentation. It covers all the critical criteria judges look for.
+
+------------------------------------------------------------------------
+1. PROBLEM STATEMENT
+------------------------------------------------------------------------
+In critical scenarios such as disaster response, search-and-rescue, or 
+large-scale environmental monitoring, human operators are overwhelmed by 
+managing multiple autonomous vehicles. 
+Currently, operators must either pilot drones individually or rely on rigid, 
+pre-programmed flight paths. When dynamic obstacles appear (e.g., collapsing 
+buildings, moving weather systems) or communication links drop, traditional 
+systems fail. There is a lack of an adaptive, "hive-mind" framework that can 
+intelligently route multiple drones, maintain mesh network integrity, and 
+react to real-time hazards without constant human micro-management.
+
+------------------------------------------------------------------------
+2. PROPOSED SOLUTION
+------------------------------------------------------------------------
+We present Q-Swarm: an intelligent, autonomous drone swarm simulation and 
+Command Center dashboard. 
+Q-Swarm uses a localized "Quantum Decision Pipeline" (representing advanced 
+state-space evaluation) to allow drones to make decentralized routing decisions. 
+Our solution provides a highly intuitive, real-time tactical web dashboard 
+where a single operator can oversee the entire swarm's mission progress, 
+network health, and battery constraints, while the drones autonomously 
+negotiate obstacle avoidance and target acquisition.
+
+------------------------------------------------------------------------
+3. NOVELTY & UNIQUENESS
+------------------------------------------------------------------------
+- Decentralized Mesh-Awareness: Unlike standard routing algorithms that only 
+  care about reaching a destination, Q-Swarm drones are actively aware of their 
+  network graph. If a drone strays too far and risks a "Partition Risk" (network 
+  disconnection), the swarm dynamically adjusts to maintain the mesh.
+- Quantum-Inspired Routing: By evaluating multiple state superpositions 
+  (potential future paths) simultaneously, the swarm avoids local minimums 
+  (getting stuck behind obstacles).
+- High-Performance Custom Visualization: Instead of relying on slow, static 
+  Python plotting, Q-Swarm features a custom HTML5 Canvas bridge built into 
+  Streamlit, allowing for 60FPS fluid animations, real-time particle rendering, 
+  and professional command-center aesthetics right in the browser.
+
+------------------------------------------------------------------------
+4. TECHNICAL CONTENT (UNDER THE HOOD)
+------------------------------------------------------------------------
+- Frontend Architecture: Built using Streamlit for rapid, data-driven UI 
+  development. The UI uses a custom "Bright Mode" glassmorphism CSS theme for 
+  a professional look.
+- Rendering Engine: A custom JavaScript/HTML5 Canvas component (`visualizer.py`) 
+  is embedded within Streamlit. It consumes a JSON-serialized history of the 
+  swarm's telemetry and smoothly interpolates the data between steps to create 
+  fluid animations, avoiding the lag of traditional Python UI loops.
+- Backend Simulation: A Python-based physics and state engine (`SwarmEnv`) 
+  calculates positional vectors, battery drain (factoring in movement costs), 
+  dynamic obstacle bounding-box collisions, and target proximity.
+
+------------------------------------------------------------------------
+5. FEASIBILITY
+------------------------------------------------------------------------
+Q-Swarm is highly feasible for real-world deployment. 
+- Computationally Lightweight: The decision pipeline is optimized to run on 
+  edge-compute devices (like a Raspberry Pi onboard a drone), only passing 
+  lightweight telemetry (coordinates, battery, ID) back to the Command Center.
+- Standard Web Tech: Because the dashboard is web-based (Streamlit/HTML5), 
+  it can be deployed on any standard cloud infrastructure (AWS/GCP) and accessed 
+  by operators on standard tablets or laptops in the field without heavy local 
+  installations.
+
+------------------------------------------------------------------------
+6. VIABILITY
+------------------------------------------------------------------------
+The commercial and operational viability is very strong:
+- Cost-Effective: Reduces the human-to-drone ratio from 1:1 to 1:N, drastically 
+  lowering operational costs for enterprise drone fleets.
+- Scalable: The mesh-network logic means adding more drones inherently strengthens 
+  the network and coverage, rather than overwhelming a central server.
+- Broad Market Application: While pitched for emergency response, the same 
+  core software can be licensed for agricultural surveying, warehouse inventory, 
+  or automated security patrols.
+
+------------------------------------------------------------------------
+7. IMPACT AND BENEFITS
+------------------------------------------------------------------------
+- Saves Lives: In search-and-rescue, faster, automated area coverage means 
+  finding victims before time runs out.
+- Safety First: Dynamic obstacle avoidance ensures expensive hardware isn't 
+  lost in unpredictable environments.
+- Operational Efficiency: A single operator can manage a massive fleet, 
+  focusing on high-level strategic decisions (where to search) while the swarm 
+  handles the tactical execution (how to fly there safely).
+
+========================================================================
+HOW TO RUN THE DEMO:
+$ streamlit run src/qswarm/dashboard/app.py
+========================================================================

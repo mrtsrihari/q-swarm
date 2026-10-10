@@ -32,59 +32,58 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
             body {{
                 margin: 0;
                 padding: 0;
-                background-color: #0F172A; /* Dark tactical background */
+                background-color: #F8FAFC;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
                 font-family: -apple-system, sans-serif;
-                color: #F8FAFC;
+                color: #0F172A;
             }}
             .canvas-container {{
                 position: relative;
                 border-radius: 12px;
                 overflow: hidden;
-                box-shadow: 0 0 40px rgba(37, 99, 235, 0.2);
-                border: 1px solid #1E293B;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                border: 1px solid #E2E8F0;
             }}
             canvas {{
-                background-color: #020617;
+                background-color: #FFFFFF;
                 display: block;
             }}
-            /* CRT Scanline Overlay */
+            /* Light Mode Scanline Overlay */
             .scanlines {{
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-                background-size: 100% 4px, 3px 100%;
+                background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.03) 50%);
+                background-size: 100% 4px;
                 pointer-events: none;
                 z-index: 10;
-                opacity: 0.7;
             }}
             /* Vignette */
             .vignette {{
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
+                background: radial-gradient(circle, rgba(255,255,255,0) 60%, rgba(248,250,252,0.6) 100%);
                 pointer-events: none;
                 z-index: 11;
             }}
             #controls {{
                 position: absolute;
                 bottom: 20px;
-                background: rgba(15, 23, 42, 0.85);
+                background: rgba(255, 255, 255, 0.9);
                 backdrop-filter: blur(10px);
-                border: 1px solid #334155;
+                border: 1px solid #E2E8F0;
                 padding: 10px 20px;
                 border-radius: 20px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
                 display: flex;
                 gap: 15px;
                 align-items: center;
                 z-index: 20;
             }}
             button {{
-                background: #3B82F6;
+                background: #2563EB;
                 color: white;
                 border: none;
                 padding: 8px 16px;
@@ -96,19 +95,19 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 letter-spacing: 1px;
                 font-size: 11px;
             }}
-            button:hover {{ background: #60A5FA; box-shadow: 0 0 10px #3B82F6; }}
-            input[type=range] {{ width: 200px; accent-color: #3B82F6; }}
+            button:hover {{ background: #3B82F6; box-shadow: 0 0 10px rgba(37, 99, 235, 0.4); }}
+            input[type=range] {{ width: 200px; accent-color: #2563EB; }}
             
             .legend {{
                 position: absolute;
                 top: 15px;
                 right: 15px;
-                background: rgba(15, 23, 42, 0.85);
+                background: rgba(255, 255, 255, 0.9);
                 backdrop-filter: blur(10px);
                 padding: 12px;
                 border-radius: 8px;
                 font-size: 12px;
-                border: 1px solid #334155;
+                border: 1px solid #E2E8F0;
                 z-index: 20;
             }}
             
@@ -118,8 +117,8 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 left: 15px;
                 font-size: 24px;
                 font-weight: 900;
-                color: #F8FAFC;
-                text-shadow: 0 0 10px rgba(255,255,255,0.5);
+                color: #0F172A;
+                text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff, -1px 1px 0px #fff;
                 letter-spacing: 2px;
                 z-index: 20;
             }}
@@ -145,7 +144,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
             <div id="controls">
                 <button id="playBtn">Play ▶</button>
                 <input type="range" id="scrubber" min="0" value="0" step="1">
-                <span id="stepCounter" style="font-weight:bold; color:#94A3B8; font-variant-numeric: tabular-nums;">STEP 0</span>
+                <span id="stepCounter" style="font-weight:bold; color:#475569; font-variant-numeric: tabular-nums;">STEP 0</span>
             </div>
         </div>
         
@@ -169,8 +168,8 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
             canvas.height = size;
             const scale = size / config.arenaDim;
             
-            // Bright neon colors for dark tactical theme
-            const dronePalette = ["#60A5FA", "#34D399", "#A78BFA", "#FBBF24", "#F472B6", "#38BDF8", "#4ADE80"];
+            // Bright colors for light theme
+            const dronePalette = ["#2563EB", "#059669", "#7C3AED", "#D97706", "#DB2777", "#F59E0B", "#14B8A6"];
             
             let time = 0;
             
@@ -206,7 +205,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
             function drawGrid() {{
                 // Animated pulse grid
                 const pulse = Math.sin(time) * 0.1 + 0.15;
-                ctx.strokeStyle = `rgba(30, 41, 59, ${{pulse}})`;
+                ctx.strokeStyle = `rgba(148, 163, 184, ${{pulse}})`;
                 ctx.lineWidth = 1;
                 const gridSpacing = 2.0;
                 for (let i = 0; i <= config.arenaDim; i += gridSpacing) {{
@@ -237,10 +236,8 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 const x = drone.x * scale;
                 const y = drone.y * scale;
                 
-                ctx.globalCompositeOperation = "lighter";
-                
                 // Deep glow
-                ctx.shadowBlur = isSelected ? 30 : 15;
+                ctx.shadowBlur = isSelected ? 20 : 10;
                 ctx.shadowColor = color;
                 
                 // Base core
@@ -257,7 +254,6 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 ctx.stroke();
                 
                 ctx.shadowBlur = 0;
-                ctx.globalCompositeOperation = "source-over";
                 
                 // Battery Ring (inner)
                 const batRatio = drone.battery / 100.0;
@@ -312,11 +308,10 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 if (q < 0.6) {{ stroke = "#F59E0B"; w = 1.5; }}
                 if (q < 0.2) {{ stroke = "#EF4444"; w = 1; ctx.setLineDash([4,4]); }}
                 
-                if (config.mode === 'mission') ctx.globalAlpha = 0.4;
+                if (config.mode === 'mission') ctx.globalAlpha = 0.5;
                 if (config.mode === 'mesh') ctx.globalAlpha = 1.0;
                 if (config.mode === 'coverage') ctx.globalAlpha = 0.15;
                 
-                ctx.globalCompositeOperation = "lighter";
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = stroke;
                 
@@ -329,7 +324,6 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 
                 ctx.setLineDash([]);
                 ctx.shadowBlur = 0;
-                ctx.globalCompositeOperation = "source-over";
                 
                 // Particles along link
                 if (q >= 0.2 && config.mode !== 'coverage') {{
@@ -371,8 +365,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 const nextStep = Math.min(currentStep + 1, totalSteps - 1);
                 const state = getInterpolatedState(currentStep, nextStep, interp);
                 
-                // Draw Trails (Neon)
-                ctx.globalCompositeOperation = "lighter";
+                // Draw Trails (Light Mode)
                 for (let i = 0; i < numDrones; i++) {{
                     ctx.beginPath();
                     const color = dronePalette[i % dronePalette.length];
@@ -393,12 +386,10 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 }}
                 ctx.globalAlpha = 1.0;
                 ctx.shadowBlur = 0;
-                ctx.globalCompositeOperation = "source-over";
                 
                 // Draw Coverage Heatmap
                 if (config.mode === 'coverage') {{
-                    ctx.fillStyle = "rgba(56, 189, 248, 0.08)";
-                    ctx.globalCompositeOperation = "lighter";
+                    ctx.fillStyle = "rgba(56, 189, 248, 0.1)";
                     for (let s = 0; s <= currentStep; s++) {{
                         const f = historyData[s];
                         for (let pt of f.drones) {{
@@ -407,7 +398,6 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                             ctx.fill();
                         }}
                     }}
-                    ctx.globalCompositeOperation = "source-over";
                 }}
                 
                 // Draw Obstacles (Darkred / Gray)
@@ -430,7 +420,6 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 }}
                 
                 // Draw Targets (Pulsing Beacons)
-                ctx.globalCompositeOperation = "lighter";
                 for (let t of state.targets) {{
                     if (t.reached) {{
                         ctx.shadowBlur = 15;
@@ -449,7 +438,6 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                         ctx.fill(); ctx.stroke();
                     }}
                 }}
-                ctx.globalCompositeOperation = "source-over";
                 ctx.shadowBlur = 0;
                 
                 for (let e of state.edges) drawLink(e, state.drones);
