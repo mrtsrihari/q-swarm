@@ -190,6 +190,34 @@ ruff check .
 
 ---
 
-## 8. License
+## 8. Immediate Free Deployment on Streamlit Community Cloud
+
+The entire Q-Swarm RL dashboard is prepared for zero-configuration, 1-click deployment on [Streamlit Community Cloud](https://share.streamlit.io/):
+
+### Cloud Deployment Steps
+
+1. **Fork or Push** this repository to your GitHub account:
+   ```bash
+   git remote add origin https://github.com/mrtsrihari/q-swarm.git
+   git push -u origin main
+   ```
+2. **Log into [share.streamlit.io](https://share.streamlit.io/)** with your GitHub account.
+3. **Click "New app"** and fill in the deployment configuration:
+   - **Repository**: `mrtsrihari/q-swarm` (or your fork)
+   - **Branch**: `main`
+   - **Main file path**: `streamlit_app.py` *(or `app.py`)*
+   - **Advanced settings**: Python `3.10`
+4. **Click "Deploy!"**
+
+### Public Cloud Architecture & Security Guardrails
+
+- **Zero-Secret Guarantee**: No IBM Quantum API tokens or cloud credentials are stored or needed in the public repository or deployment.
+- **Fast CPU Demo Mode**: Uses bundled, lightweight pre-trained model checkpoints in [`results/checkpoints/`](results/checkpoints/) (~20 KB total) for sub-second, responsive episode simulation on cloud CPUs.
+- **Physical Hardware Safe Guard**: Direct cloud QPU submission is disabled by default in the public app to avoid quota consumption and queue lag. Full local hardware execution remains available via CLI when `.env` is configured locally.
+- **Local Training Separation**: Resource-heavy RL training runs locally via `python -m qswarm.training.train_hybrid`, while the public web app serves live inference, interactive trajectory playback, and QAOA graph repair analysis.
+
+---
+
+## 9. License
 
 This project is licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.

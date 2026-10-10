@@ -35,7 +35,8 @@ htmlcov/
 .ruff_cache/
 
 # Streamlit
-.streamlit/
+.streamlit/*
+!.streamlit/config.toml
 
 # IDE
 .idea/
@@ -50,8 +51,9 @@ htmlcov/
 
 # Output & Artifacts
 results/runs/
-results/checkpoints/
 results/benchmark_*
 results/latest_dir.txt
 !results/sample/
 !results/sample/**
+!results/checkpoints/
+!results/checkpoints/**

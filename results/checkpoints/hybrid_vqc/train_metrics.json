@@ -1,0 +1,12 @@
+{
+  "model_type": "hybrid_vqc",
+  "num_qubits": 4,
+  "circuit_depth": 7,
+  "trainable_quantum_parameters": 8,
+  "trainable_parameters": 33,
+  "episodes": 4,
+  "wall_clock_time": 49.74,
+  "mean_return": -384.66,
+  "mean_loss": 30.8114,
+  "checkpoint": "results/checkpoints/hybrid_vqc\\checkpoint.pt"
+}

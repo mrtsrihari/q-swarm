@@ -1,7 +1,6 @@
-"""Q-Swarm RL: Emergency-Response Swarm Command Center & Quantum Navigation Dashboard."""
-
 import json
 import os
+import sys
 from typing import Any, Dict
 
 import matplotlib.pyplot as plt
@@ -10,12 +9,20 @@ import pandas as pd
 import streamlit as st
 import torch
 
-from qswarm.envs.swarm_env import SwarmEnv
-from qswarm.optimization.qaoa_mesh_repair import run_qaoa_benchmark
-from qswarm.policies.classical import ClassicalMatchedPolicy, ClassicalMLPPolicy
-from qswarm.policies.features import compress_features_deterministic, get_encoding_feature_breakdown
-from qswarm.policies.heuristic import HeuristicSwarmPolicy
-from qswarm.policies.hybrid_vqc import HybridVQCPolicy
+# Ensure src/ is on PYTHONPATH for seamless Streamlit Community Cloud execution
+SRC_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if SRC_ROOT not in sys.path:
+    sys.path.insert(0, SRC_ROOT)
+
+from qswarm.envs.swarm_env import SwarmEnv  # noqa: E402
+from qswarm.optimization.qaoa_mesh_repair import run_qaoa_benchmark  # noqa: E402
+from qswarm.policies.classical import ClassicalMatchedPolicy, ClassicalMLPPolicy  # noqa: E402
+from qswarm.policies.features import (  # noqa: E402
+    compress_features_deterministic,
+    get_encoding_feature_breakdown,
+)
+from qswarm.policies.heuristic import HeuristicSwarmPolicy  # noqa: E402
+from qswarm.policies.hybrid_vqc import HybridVQCPolicy  # noqa: E402
 
 st.set_page_config(
     page_title="Q-Swarm RL | Emergency Swarm Command Center",
@@ -375,6 +382,21 @@ with left_col:
         index=3,
     )
 
+    # Cloud Demo Mode & Execution Settings
+    demo_mode = st.toggle("⚡ Fast Cloud Demo Mode", value=True, help="Executes fast CPU simulation using bundled pre-trained checkpoints (recommended for public cloud deployment).")
+    if demo_mode:
+        st.markdown("<span class='status-pill pill-online' style='display:inline-block; margin-bottom:8px;'>⚡ DEMO MODE: CPU INFERENCE (BUNDLED CHECKPOINTS)</span>", unsafe_allow_html=True)
+
+    with st.expander("ℹ️ Public Cloud & Training Policy", expanded=False):
+        st.markdown("""
+        **Training Policy**:
+        Full reinforcement learning training (DQN with parameter-shift quantum autograd) requires substantial compute and is executed locally via CLI:
+        ```bash
+        python src/qswarm/training/train_hybrid.py --scenario rescue_maze
+        ```
+        The public cloud application evaluates pre-trained checkpoints and deterministic heuristics instantaneously on CPU.
+        """)
+
     # Quantum Backend & Encoding Selector
     st.markdown("#### ⚛️ Quantum Circuit Parameters")
     is_quantum = policy_choice.startswith("hybrid_vqc")
@@ -399,15 +421,20 @@ with left_col:
     if is_quantum and backend_mode == "IBM Quantum Hardware (Cloud QPU)":
         ibm_token = os.getenv("IBM_QUANTUM_TOKEN")
         if not ibm_token:
-            st.warning("⚠️ **IBM Quantum Hardware mode unavailable**: No `IBM_QUANTUM_TOKEN` found in environment. Automatically falling back to calibrated `GenericBackendV2` superconducting simulation.")
+            st.warning("""
+            🔒 **Physical Hardware Execution Disabled in Public Deployment**:
+            Physical IBM Quantum QPU execution requires private runtime credentials and is disabled by default in public deployment to protect private quotas and avoid queue latency.
+
+            The system executes using calibrated **GenericBackendV2 Superconducting Noise Models** with $M^{-1}$ readout error mitigation. To run against real hardware, clone locally and set `IBM_QUANTUM_TOKEN` in `.env`.
+            """)
         else:
-            st.success("✅ **IBM Cloud Token Detected**: Target backend ready for QPU batch inference.")
+            st.success("✅ **IBM Cloud Token Detected**: Target backend authenticated for batch inference.")
 
     c_s1, c_s2 = st.columns(2)
     with c_s1:
         seed_choice = st.number_input("Episode Seed", min_value=1, max_value=9999, value=42)
     with c_s2:
-        max_steps_choice = st.slider("Horizon Steps", min_value=15, max_value=60, value=35)
+        max_steps_choice = st.slider("Horizon Steps", min_value=15, max_value=60, value=25 if demo_mode else 35)
 
     num_drones = 6 if scenario_choice == "scale_test" else 4
 

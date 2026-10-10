@@ -1,0 +1,10 @@
+{
+  "model_type": "classical_matched",
+  "trainable_parameters": 25,
+  "episodes": 5,
+  "wall_clock_time": 2.17,
+  "mean_return": -468.71,
+  "last_return": -438.09,
+  "mean_loss": 26.6582,
+  "checkpoint": "results/checkpoints/classical_matched\\checkpoint.pt"
+}
