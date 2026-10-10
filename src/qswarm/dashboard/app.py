@@ -636,7 +636,7 @@ with center_col:
     for spine in ax.spines.values():
         spine.set_color("#CBD5E1")
 
-    st.pyplot(fig, use_container_width=True)
+    st.pyplot(fig, width="stretch")
 
     # Always-Visible Clean Legend
     st.markdown("""
@@ -780,7 +780,7 @@ with right_col:
         ax_exp.tick_params(colors="#5B21B6", labelsize=7.5)
         for spine in ax_exp.spines.values():
             spine.set_color("#DDD6FE")
-        st.pyplot(fig_exp, use_container_width=True)
+        st.pyplot(fig_exp, width="stretch")
 
     else:
         st.markdown("#### 🧠 Classical Decision Pipeline")
@@ -825,18 +825,18 @@ with tab_b1:
 
     if csv_path:
         bench_df = pd.read_csv(csv_path)
-        st.dataframe(bench_df, use_container_width=True)
+        st.dataframe(bench_df, width="stretch")
 
         chart_path = os.path.join(os.path.dirname(csv_path), "comparison_metrics.png")
         if os.path.exists(chart_path):
-            st.image(chart_path, caption="Comparative Return, Search Coverage, and Latency Metrics Across Policies", use_container_width=True)
+            st.image(chart_path, caption="Comparative Return, Search Coverage, and Latency Metrics Across Policies", width="stretch")
 
         # Feature Encoding Ablation
         enc_csv = os.path.join(os.path.dirname(csv_path), "encoding_ablation.csv")
         if os.path.exists(enc_csv):
             st.markdown("#### ⚛️ Quantum State Encoding Ablation (Graph-Aware vs Simple Angle)")
             enc_df = pd.read_csv(enc_csv)
-            st.dataframe(enc_df, use_container_width=True)
+            st.dataframe(enc_df, width="stretch")
             st.markdown("✅ **Empirical Conclusion**: In `rescue_maze`, graph-aware encoding preserves **100% mesh connected ratio** vs **16.7–30.0%** for simple angle encoding, demonstrating that topology-aware VQC input directly prevents swarm fragmentation.")
 
         with open(csv_path, "rb") as f:
