@@ -10,4 +10,4 @@ if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
 # Import and execute main dashboard module
-import qswarm.dashboard.app  # noqa: F401
+import qswarm.dashboard.app  # noqa: E402, F401
