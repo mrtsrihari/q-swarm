@@ -23,6 +23,7 @@ from qswarm.policies.features import (  # noqa: E402
 )
 from qswarm.policies.heuristic import HeuristicSwarmPolicy  # noqa: E402
 from qswarm.policies.hybrid_vqc import HybridVQCPolicy  # noqa: E402
+from qswarm.dashboard.visualizer import render_interactive_map  # noqa: E402
 
 st.set_page_config(
     page_title="Q-Swarm RL | Emergency Swarm Command Center",
@@ -338,15 +339,37 @@ st.markdown("""
 
 
 # -------------------------------------------------------------
-# MAIN 3-PANEL COMMAND CENTER LAYOUT
-# -------------------------------------------------------------
-left_col, center_col, right_col = st.columns([2.8, 6.2, 3.2])
+# MAIN COMMAND CENTER LAYOUT
+# =============================================================
+presentation_mode = st.toggle("🎥 Presentation Mode", value=False, help="Maximize map for hackathon presentation")
+
+# Top-level map mode selector
+st.markdown("### 👁️ Visual Mode")
+visual_mode = st.radio(
+    "Visual Mode",
+    ["mission", "mesh", "coverage", "quantum", "replay"],
+    format_func=lambda x: {
+        "mission": "Mission View (Drones & Routes)",
+        "mesh": "Mesh View (Comm Links)",
+        "coverage": "Coverage View (Heatmap)",
+        "quantum": "Quantum View (Features)",
+        "replay": "Replay View (Timeline Scrubber)"
+    }[x],
+    horizontal=True,
+    label_visibility="collapsed"
+)
+
+if presentation_mode:
+    left_col, center_col, right_col = st.columns([0.01, 9.98, 0.01])
+else:
+    left_col, center_col, right_col = st.columns([2.8, 6.2, 3.2])
 
 # =============================================================
 # LEFT PANEL: MISSION CONFIGURATION & CONTROLS
 # =============================================================
 with left_col:
-    st.markdown("### 🎯 Mission Configuration")
+    if not presentation_mode:
+        st.markdown("### 🎯 Mission Configuration")
 
     scenario_choice = st.selectbox(
         "Disaster Scenario",
@@ -534,137 +557,33 @@ with center_col:
 
     current_frame = history[st.session_state.step_idx]
 
-    # Matplotlib High-Contrast Light Command Map
-    fig, ax = plt.subplots(figsize=(8.8, 6.8), dpi=100)
-    fig.patch.set_facecolor("#FFFFFF")
-    ax.set_facecolor("#F8FAFC")
-
+    # Use HTML5 Canvas Custom Visualizer
     arena_dim = 25.0 if scenario_choice == "mesh_tradeoff" else (30.0 if scenario_choice == "scale_test" else 20.0)
-    ax.set_xlim(-0.5, arena_dim + 0.5)
-    ax.set_ylim(-0.5, arena_dim + 0.5)
-    ax.set_title(
-        f"GPS-Denied Disaster Zone [{scenario_choice.upper()}] — Step {st.session_state.step_idx} of {total_frames - 1}",
-        color="#0F172A",
-        fontsize=12,
-        fontweight="bold",
-        pad=10,
-    )
-    ax.grid(color="#E2E8F0", linestyle="--", linewidth=0.8, alpha=0.9)
+    
+    # We retrieve the selected_drone_id from session state if it exists, otherwise 0
+    selected_drone_id = st.session_state.get("selected_drone_id", 0)
 
-    # Draw Obstacles (Static Debris & Dynamic Hazards)
-    for obs in current_frame["obstacles"]:
-        if obs["is_dynamic"]:
-            circle = plt.Circle((obs["x"], obs["y"]), obs["radius"], color="#FEE2E2", edgecolor="#DC2626", linewidth=2.0, zorder=2)
-            ax.add_patch(circle)
-            ax.text(obs["x"], obs["y"], "HAZARD", color="#DC2626", fontsize=7.5, ha="center", va="center", fontweight="bold", zorder=3)
-        else:
-            circle = plt.Circle((obs["x"], obs["y"]), obs["radius"], color="#E2E8F0", edgecolor="#64748B", linewidth=1.5, zorder=2)
-            ax.add_patch(circle)
-            ax.text(obs["x"], obs["y"], "DEBRIS", color="#475569", fontsize=7.5, ha="center", va="center", fontweight="bold", zorder=3)
+    render_interactive_map(history, arena_dim, st.session_state.step_idx, visual_mode, selected_drone_id)
 
-    # Draw Search Targets
-    for t in current_frame["targets"]:
-        if t["is_reached"]:
-            circle = plt.Circle((t["x"], t["y"]), 0.9, color="#ECFDF5", edgecolor="#059669", linewidth=2.2, zorder=3)
-            ax.add_patch(circle)
-            ax.text(t["x"], t["y"], "✓ SAVED", color="#059669", fontsize=7.5, ha="center", va="center", fontweight="bold", zorder=4)
-        else:
-            circle = plt.Circle((t["x"], t["y"]), 0.9, color="#FEF3C7", edgecolor="#D97706", linewidth=2.0, zorder=3)
-            ax.add_patch(circle)
-            ax.text(t["x"], t["y"], f"T{t['target_id']}", color="#D97706", fontsize=8, ha="center", va="center", fontweight="bold", zorder=4)
 
-    # Draw Communication Mesh Links
-    drones_map = {d.drone_id: d for d in current_frame["drones"]}
-    for edge in current_frame["edges"]:
-        u, v = edge["source"], edge["target"]
-        if u in drones_map and v in drones_map:
-            p1 = drones_map[u].position
-            p2 = drones_map[v].position
-            weight = edge["weight"]
-            if weight >= 0.6:
-                edge_color = "#059669"  # Healthy Teal/Green
-                edge_ls = "-"
-                edge_lw = 2.2
-            elif weight >= 0.2:
-                edge_color = "#D97706"  # Attenuated Amber
-                edge_ls = "-"
-                edge_lw = 1.4
-            else:
-                edge_color = "#DC2626"  # Critical Coral/Red
-                edge_ls = "--"
-                edge_lw = 1.2
-            ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color=edge_color, linewidth=edge_lw, linestyle=edge_ls, alpha=0.85, zorder=2)
-
-    # Color-blind safe markers and distinct shapes for each drone
-    marker_styles = ["o", "s", "D", "^", "h", "P"]
-    drone_palette = ["#2563EB", "#059669", "#7C3AED", "#D97706", "#4F46E5", "#DB2777"]
-
-    for i, drone in enumerate(current_frame["drones"]):
-        color = drone_palette[drone.drone_id % len(drone_palette)]
-        marker = marker_styles[drone.drone_id % len(marker_styles)]
-
-        # Trajectory trail
-        past_coords = [h["drones"][i].position for h in history[:st.session_state.step_idx + 1] if len(h["drones"]) > i]
-        if len(past_coords) > 1:
-            px, py = zip(*past_coords)
-            ax.plot(px, py, color=color, alpha=0.35, linewidth=1.8, linestyle=":", zorder=3)
-
-        # Drone marker
-        ax.scatter(
-            [drone.position[0]],
-            [drone.position[1]],
-            color=color,
-            marker=marker,
-            s=180,
-            edgecolors="#FFFFFF",
-            linewidth=2.0,
-            zorder=5,
-        )
-        ax.text(
-            drone.position[0],
-            drone.position[1] + 0.65,
-            f"D{drone.drone_id} ({int(drone.battery)}%)",
-            color="#0F172A",
-            fontsize=8.5,
-            fontweight="bold",
-            ha="center",
-            bbox=dict(boxstyle="round,pad=0.2", facecolor="#FFFFFF", edgecolor=color, alpha=0.85),
-            zorder=6,
-        )
-
-    ax.tick_params(colors="#475569")
-    for spine in ax.spines.values():
-        spine.set_color("#CBD5E1")
-
-    st.pyplot(fig, width="stretch")
-
-    # Always-Visible Clean Legend
-    st.markdown("""
-    <div class="legend-container">
-        <div class="legend-item"><span style="color:#2563EB; font-size:1.1rem;">●</span> Drone 0 (Circle)</div>
-        <div class="legend-item"><span style="color:#059669; font-size:1.1rem;">■</span> Drone 1 (Square)</div>
-        <div class="legend-item"><span style="color:#7C3AED; font-size:1.1rem;">◆</span> Drone 2 (Diamond)</div>
-        <div class="legend-item"><span style="color:#D97706; font-size:1.1rem;">▲</span> Drone 3 (Triangle)</div>
-        <div class="legend-item"><span style="border-top:2px solid #059669; width:16px; display:inline-block;"></span> Strong Mesh Link (q ≥ 0.6)</div>
-        <div class="legend-item"><span style="border-top:2px solid #D97706; width:16px; display:inline-block;"></span> Attenuated Link (0.2 ≤ q &lt; 0.6)</div>
-        <div class="legend-item"><span style="border-top:2px dashed #DC2626; width:16px; display:inline-block;"></span> Partition Risk (q &lt; 0.2)</div>
-    </div>
-    """, unsafe_allow_html=True)
 
 
 # =============================================================
 # RIGHT PANEL: DRONE INSPECTOR & QUANTUM DECISION PIPELINE
 # =============================================================
 with right_col:
-    st.markdown("### 🛰️ Drone Inspector")
+    selected_drone_id = 0
+    if not presentation_mode:
+        st.markdown("### 🛰️ Drone Inspector")
 
-    drone_ids = [d.drone_id for d in current_frame["drones"]]
-    selected_drone_id = st.selectbox(
-        "Inspect Swarm Agent",
-        drone_ids,
-        format_func=lambda x: f"Drone {x} (Telemetry & Decisions)",
-        index=0,
-    )
+        drone_ids = [d.drone_id for d in current_frame["drones"]]
+        selected_drone_id = st.selectbox(
+            "Inspect Swarm Agent",
+            drone_ids,
+            format_func=lambda x: f"Drone {x} (Telemetry & Decisions)",
+            index=0,
+            key="selected_drone_id_inspect"
+        )
 
     selected_drone = next(d for d in current_frame["drones"] if d.drone_id == selected_drone_id)
 
