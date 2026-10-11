@@ -5,7 +5,7 @@ import json
 import os
 import time
 from collections import deque
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 
 import numpy as np
 import torch
@@ -46,7 +46,7 @@ def train_classical(
     smoke: bool = False,
     model_type: Optional[str] = None,
     seed: int = 42,
-) -> Dict[str, any]:
+) -> Dict[str, Any]:
     """Train a classical DQN agent with logging and checkpoint export."""
     set_seed(seed)
     rng = np.random.default_rng(seed)
