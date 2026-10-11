@@ -14,6 +14,7 @@ SRC_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if SRC_ROOT not in sys.path:
     sys.path.insert(0, SRC_ROOT)
 
+from qswarm.dashboard.visualizer import render_interactive_map  # noqa: E402
 from qswarm.envs.swarm_env import SwarmEnv  # noqa: E402
 from qswarm.optimization.qaoa_mesh_repair import run_qaoa_benchmark  # noqa: E402
 from qswarm.policies.classical import ClassicalMatchedPolicy, ClassicalMLPPolicy  # noqa: E402
@@ -23,7 +24,6 @@ from qswarm.policies.features import (  # noqa: E402
 )
 from qswarm.policies.heuristic import HeuristicSwarmPolicy  # noqa: E402
 from qswarm.policies.hybrid_vqc import HybridVQCPolicy  # noqa: E402
-from qswarm.dashboard.visualizer import render_interactive_map  # noqa: E402
 
 st.set_page_config(
     page_title="Q-Swarm RL | Emergency Swarm Command Center",
@@ -293,7 +293,7 @@ st.markdown("""
         border-left: 8px solid #0000ff;
         font-weight: bold;
     }
-    
+
     /* Tweaking specific colors explicitly used inline in app.py */
     span[style*="color:#2563EB"] {
         color: #0000ff !important; /* Replacing standard blue with pure brutalist blue */
@@ -616,7 +616,7 @@ with center_col:
 
     # Use HTML5 Canvas Custom Visualizer
     arena_dim = 25.0 if scenario_choice == "mesh_tradeoff" else (30.0 if scenario_choice == "scale_test" else 20.0)
-    
+
     # We retrieve the selected_drone_id from session state if it exists, otherwise 0
     selected_drone_id = st.session_state.get("selected_drone_id", 0)
 
@@ -631,7 +631,7 @@ with center_col:
 with right_col:
     selected_drone_id = 0
     drone_ids = [d.drone_id for d in current_frame["drones"]]
-    
+
     if not presentation_mode:
         st.markdown("###  Drone Inspector")
 

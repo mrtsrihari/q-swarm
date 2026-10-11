@@ -1,10 +1,13 @@
 import json
+
 import streamlit as st
+
+
 def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id):
     """
     Renders an advanced HTML5 Canvas visualization of the drone swarm with tactical FX.
     """
-    
+
     clean_history = []
     for frame in history:
         clean_frame = {
@@ -96,7 +99,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
             }}
             button:hover {{ background: #3B82F6; box-shadow: 0 0 10px rgba(37, 99, 235, 0.4); }}
             input[type=range] {{ width: 200px; accent-color: #2563EB; }}
-            
+
             .legend {{
                 position: absolute;
                 top: 15px;
@@ -109,7 +112,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 border: 1px solid #E2E8F0;
                 z-index: 20;
             }}
-            
+
             .hud {{
                 position: absolute;
                 top: 15px;
@@ -146,49 +149,49 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 <span id="stepCounter" style="font-weight:bold; color:#475569; font-variant-numeric: tabular-nums;">STEP 0</span>
             </div>
         </div>
-        
+
         <script>
             const config = {data_json};
             const historyData = config.history;
             const totalSteps = historyData.length;
             const numDrones = historyData[0].drones.length;
-            
+
             let currentStep = config.stepIdx;
             let targetStep = config.stepIdx;
             let playInterval = null;
             let isPlaying = false;
-            let interp = 0.0; 
-            
+            let interp = 0.0;
+
             const canvas = document.getElementById("arena");
             const ctx = canvas.getContext("2d");
-            
+
             const size = 680;
             canvas.width = size;
             canvas.height = size;
             const scale = size / config.arenaDim;
-            
+
             // Bright colors for light theme
             const dronePalette = ["#2563EB", "#059669", "#7C3AED", "#D97706", "#DB2777", "#F59E0B", "#14B8A6"];
-            
+
             let time = 0;
-            
+
             const playBtn = document.getElementById("playBtn");
             const scrubber = document.getElementById("scrubber");
             const stepCounter = document.getElementById("stepCounter");
-            
+
             scrubber.max = totalSteps - 1;
             scrubber.value = currentStep;
-            
+
             const hud = document.getElementById("hud");
             hud.innerText = config.mode.toUpperCase() + " VIEW";
-            
+
             function togglePlay() {{
                 isPlaying = !isPlaying;
                 playBtn.innerText = isPlaying ? "Pause ⏸" : "Play ▶";
             }}
-            
+
             playBtn.addEventListener("click", togglePlay);
-            
+
             scrubber.addEventListener("input", (e) => {{
                 targetStep = parseInt(e.target.value);
                 currentStep = targetStep;
@@ -196,11 +199,11 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 stepCounter.innerText = "STEP " + targetStep;
                 if (isPlaying) togglePlay();
             }});
-            
+
             function lerp(start, end, amt) {{
                 return (1-amt)*start + amt*end;
             }}
-            
+
             function drawGrid() {{
                 // Animated pulse grid
                 const pulse = Math.sin(time) * 0.1 + 0.15;
@@ -212,11 +215,11 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                     ctx.beginPath(); ctx.moveTo(0, i * scale); ctx.lineTo(size, i * scale); ctx.stroke();
                 }}
             }}
-            
+
             function getInterpolatedState(step, nextStep, t) {{
                 const f1 = historyData[step];
                 const f2 = historyData[nextStep];
-                
+
                 const drones = f1.drones.map((d1, i) => {{
                     const d2 = f2.drones[i];
                     return {{
@@ -226,34 +229,34 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                         battery: lerp(d1.battery, d2.battery, t)
                     }};
                 }});
-                
+
                 return {{ drones, edges: f1.edges, targets: f1.targets, obstacles: f1.obstacles }};
             }}
-            
+
             function drawDrone(drone, isSelected) {{
                 const color = dronePalette[drone.id % dronePalette.length];
                 const x = drone.x * scale;
                 const y = drone.y * scale;
-                
+
                 // Deep glow
                 ctx.shadowBlur = isSelected ? 20 : 10;
                 ctx.shadowColor = color;
-                
+
                 // Base core
                 ctx.fillStyle = color;
                 ctx.beginPath();
                 ctx.arc(x, y, isSelected ? 8 : 6, 0, Math.PI*2);
                 ctx.fill();
-                
+
                 // Outer rotating prop ring
                 ctx.strokeStyle = color;
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
                 ctx.arc(x, y, isSelected ? 16 : 12, time * 3, time * 3 + Math.PI*1.5);
                 ctx.stroke();
-                
+
                 ctx.shadowBlur = 0;
-                
+
                 // Battery Ring (inner)
                 const batRatio = drone.battery / 100.0;
                 ctx.strokeStyle = batRatio > 0.5 ? "#10B981" : (batRatio > 0.25 ? "#F59E0B" : "#EF4444");
@@ -261,14 +264,14 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 ctx.beginPath();
                 ctx.arc(x, y, 9, -Math.PI/2, -Math.PI/2 + batRatio * Math.PI * 2);
                 ctx.stroke();
-                
+
                 // ID Badge
                 ctx.fillStyle = "#F8FAFC";
                 ctx.font = "bold 11px monospace";
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 ctx.fillText("D" + drone.id, x, y - 24);
-                
+
                 if (config.mode === 'quantum' && isSelected) {{
                     ctx.strokeStyle = "rgba(167, 139, 250, 0.6)";
                     ctx.shadowBlur = 10;
@@ -279,14 +282,14 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                     ctx.stroke();
                     ctx.shadowBlur = 0;
                 }}
-                
+
                 // Radar sweep for selected drone
                 if (isSelected) {{
                     const startAngle = time * 4;
                     const grad = ctx.createRadialGradient(x, y, 0, x, y, 60);
                     grad.addColorStop(0, "rgba(96, 165, 250, 0.4)");
                     grad.addColorStop(1, "rgba(96, 165, 250, 0)");
-                    
+
                     ctx.fillStyle = grad;
                     ctx.beginPath();
                     ctx.moveTo(x, y);
@@ -295,35 +298,35 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                     ctx.fill();
                 }}
             }}
-            
+
             function drawLink(link, drones) {{
                 const d1 = drones.find(d => d.id === link.source);
                 const d2 = drones.find(d => d.id === link.target);
                 if (!d1 || !d2) return;
-                
+
                 let q = link.weight;
                 let stroke = "#10B981"; // Emerald
                 let w = 2.5;
                 if (q < 0.6) {{ stroke = "#F59E0B"; w = 1.5; }}
                 if (q < 0.2) {{ stroke = "#EF4444"; w = 1; ctx.setLineDash([4,4]); }}
-                
+
                 if (config.mode === 'mission') ctx.globalAlpha = 0.5;
                 if (config.mode === 'mesh') ctx.globalAlpha = 1.0;
                 if (config.mode === 'coverage') ctx.globalAlpha = 0.15;
-                
+
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = stroke;
-                
+
                 ctx.strokeStyle = stroke;
                 ctx.lineWidth = w;
                 ctx.beginPath();
                 ctx.moveTo(d1.x * scale, d1.y * scale);
                 ctx.lineTo(d2.x * scale, d2.y * scale);
                 ctx.stroke();
-                
+
                 ctx.setLineDash([]);
                 ctx.shadowBlur = 0;
-                
+
                 // Particles along link
                 if (q >= 0.2 && config.mode !== 'coverage') {{
                     const particleT = (time * 2.0 + d1.id * 0.3) % 1.0;
@@ -339,10 +342,10 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 }}
                 ctx.globalAlpha = 1.0;
             }}
-            
+
             function render() {{
                 time += 0.03;
-                
+
                 if (isPlaying) {{
                     interp += 0.05;
                     if (interp >= 1.0) {{
@@ -357,13 +360,13 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                         stepCounter.innerText = "STEP " + currentStep;
                     }}
                 }}
-                
+
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawGrid();
-                
+
                 const nextStep = Math.min(currentStep + 1, totalSteps - 1);
                 const state = getInterpolatedState(currentStep, nextStep, interp);
-                
+
                 // Draw Trails (Light Mode)
                 for (let i = 0; i < numDrones; i++) {{
                     ctx.beginPath();
@@ -385,7 +388,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                 }}
                 ctx.globalAlpha = 1.0;
                 ctx.shadowBlur = 0;
-                
+
                 // Draw Coverage Heatmap
                 if (config.mode === 'coverage') {{
                     ctx.fillStyle = "rgba(56, 189, 248, 0.1)";
@@ -398,7 +401,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                         }}
                     }}
                 }}
-                
+
                 // Draw Obstacles (Darkred / Gray)
                 for (let o of state.obstacles) {{
                     ctx.fillStyle = o.dynamic ? "rgba(153, 27, 27, 0.4)" : "rgba(51, 65, 85, 0.4)";
@@ -408,7 +411,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                     ctx.arc(o.x * scale, o.y * scale, o.r * scale, 0, Math.PI*2);
                     ctx.fill();
                     ctx.stroke();
-                    
+
                     // Draw hazard striping
                     if (o.dynamic) {{
                         ctx.fillStyle = "rgba(248, 113, 113, 0.8)";
@@ -417,7 +420,7 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                         ctx.fillText("⚠ HAZARD", o.x * scale, o.y * scale);
                     }}
                 }}
-                
+
                 // Draw Targets (Pulsing Beacons)
                 for (let t of state.targets) {{
                     if (t.reached) {{
@@ -438,15 +441,15 @@ def render_interactive_map(history, arena_dim, step_idx, mode, selected_drone_id
                     }}
                 }}
                 ctx.shadowBlur = 0;
-                
+
                 for (let e of state.edges) drawLink(e, state.drones);
                 for (let d of state.drones) drawDrone(d, d.id === config.selectedDroneId);
-                
+
                 requestAnimationFrame(render);
             }}
-            
+
             render();
-            
+
         </script>
     </body>
     </html>
